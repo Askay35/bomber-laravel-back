@@ -17,11 +17,11 @@ class BetController extends Controller
         }
 
         if ($request->time == 'year') {
-            return response()->json(['success' => true, 'data' => Bet::where('date_time', '>', Carbon::now()->floorYear()->format('Y-m-d H:i:s'))->orderByDesc($request->by)->take(10)->get()]);
+            return response()->json(['success' => true, 'data' => Bet::where('date_time', '>', Carbon::now()->floorYear()->format('Y-m-d H:i:s'))->orderByDesc($request->by)->with('user:id,name')->take(10)->get()]);
         } else if ($request->time == 'month') {
-            return response()->json(['success' => true, 'data' => Bet::where('date_time', '>', Carbon::now()->floorMonth()->format('Y-m-d H:i:s'))->orderByDesc($request->by)->take(10)->get()]);
+            return response()->json(['success' => true, 'data' => Bet::where('date_time', '>', Carbon::now()->floorMonth()->format('Y-m-d H:i:s'))->orderByDesc($request->by)->with('user:id,name')->take(10)->get()]);
         } else if ($request->time == 'day') {
-            return response()->json(['success' => true, 'data' => Bet::where('date_time', '>', Carbon::now()->floorDay()->format('Y-m-d H:i:s'))->orderByDesc($request->by)->take(10)->get()]);
+            return response()->json(['success' => true, 'data' => Bet::where('date_time', '>', Carbon::now()->floorDay()->format('Y-m-d H:i:s'))->orderByDesc($request->by)->with('user:id,name')->take(10)->get()]);
         }
         return response()->json(['success' => false, 'error' => 'Не правильно указаны фильтры']);
     }

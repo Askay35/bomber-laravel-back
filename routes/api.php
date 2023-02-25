@@ -14,10 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/register', [\App\Http\Controllers\RegistrationController::class, 'store'])->middleware('throttle:5,1');
-Route::post('/login', [\App\Http\Controllers\LoginController::class, 'login'])->middleware('throttle:10,1');
+Route::post('/register', [\App\Http\Controllers\RegistrationController::class, 'store'])->middleware('throttle:60,1');
+Route::post('/login', [\App\Http\Controllers\LoginController::class, 'login'])->middleware('throttle:60,1');
 
-Route::middleware(['token.exists','user.activity','throttle:30,1'])->group(function(){
+Route::middleware(['token.exists','user.activity','throttle:120,1'])->group(function(){
     Route::get('/user', [\App\Http\Controllers\UserController::class,'getInfo']);
 
     Route::post('/user/update/token', function(Request $request){
@@ -32,7 +32,7 @@ Route::middleware(['token.exists','user.activity','throttle:30,1'])->group(funct
 });
 Route::get('/users/online',function (Request $request){
     return \App\Models\User::where('last_activity','>',\Carbon\Carbon::now()->subMinutes(5)->format('Y-m-d H:i:s'))->count();
-})->middleware('throttle:10,1');
+})->middleware('throttle:60,1');
 
-Route::get('/bets/top' ,[\App\Http\Controllers\BetController::class, 'getTopBets'])->middleware('throttle:30,1');
+Route::get('/bets/top' ,[\App\Http\Controllers\BetController::class, 'getTopBets'])->middleware('throttle:60,1');
 
