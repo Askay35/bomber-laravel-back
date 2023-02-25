@@ -1,0 +1,29 @@
+.table-container{
+    min-height: 100vh;
+    .table-body{
+        input{
+            border: 0!important;
+        }
+    }
+    th,td{
+        text-align: center;
+    }
+    td{
+        vertical-align: middle;
+        white-space: nowrap;
+    }
+    .edit-input[name='money']{
+        width: 100px;
+    }
+    .edit-input[name='name']{
+        width: 120px;
+    }
+    .btn{
+        color:#fff;
+        padding:10px;
+    }
+    a{
+        color:inherit;
+    }
+
+}

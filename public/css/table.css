@@ -1,0 +1,28 @@
+.table-container {
+  min-height: 100vh;
+}
+.table-container .table-body input {
+  border: 0 !important;
+}
+.table-container th, .table-container td {
+  text-align: center;
+}
+.table-container td {
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.table-container .edit-input[name=money] {
+  width: 100px;
+}
+.table-container .edit-input[name=name] {
+  width: 120px;
+}
+.table-container .btn {
+  color: #fff;
+  padding: 10px;
+}
+.table-container a {
+  color: inherit;
+}
+
+/*# sourceMappingURL=table.css.map */
